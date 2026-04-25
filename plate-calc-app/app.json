@@ -4,13 +4,20 @@
     "slug": "plate-calc-app",
     "version": "1.0.0",
     "orientation": "portrait",
+    "icon": "./icon.png",
     "backgroundColor": "#111111",
     "android": {
       "package": "com.platecalc.app",
       "adaptiveIcon": {
+        "foregroundImage": "./icon.png",
         "backgroundColor": "#111111"
       }
     },
-    "platforms": ["android"]
+    "platforms": ["android"],
+    "extra": {
+      "eas": {
+        "projectId": "109ff27d-263f-400a-af17-459f6927edfe"
+      }
+    }
   }
 }
