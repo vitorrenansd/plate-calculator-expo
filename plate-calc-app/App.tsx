@@ -9,6 +9,7 @@ import {
   Platform,
   ScrollView,
   StatusBar,
+  Linking,
 } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import {
@@ -75,6 +76,21 @@ export default function App() {
               {/* Bar visual */}
               {hasSides && <BarVisual sides={result!.sides} />}
             </View>
+            {/* Footer */}
+            <View style={styles.footerContainer}>
+              <Text style={styles.footerText}>
+                "Não fui eu que ordenei a você? Seja forte e corajoso! Não se
+                apavore nem desanime, pois o Senhor, o seu Deus, estará com você
+                por onde você andar." Josué 1:9
+              </Text>
+              <TouchableOpacity
+                onPress={() =>
+                  Linking.openURL("https://github.com/vitorrenansd")
+                }
+              >
+                <Text style={styles.footerLink}>github.com/vitorrenansd</Text>
+              </TouchableOpacity>
+            </View>
           </ScrollView>
         </KeyboardAvoidingView>
       </SafeAreaView>
@@ -138,5 +154,22 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "800",
     letterSpacing: 2,
+  },
+  footerContainer: {
+    alignItems: "center",
+    paddingVertical: 16,
+    gap: 4,
+  },
+  footerText: {
+    color: "#333333",
+    fontSize: 13,
+    textAlign: "center",
+    fontStyle: "italic",
+    paddingHorizontal: 24,
+  },
+  footerLink: {
+    color: "#444444",
+    fontSize: 14,
+    textAlign: "center",
   },
 });
