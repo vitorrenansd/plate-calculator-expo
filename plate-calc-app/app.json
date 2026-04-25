@@ -1,0 +1,16 @@
+{
+  "expo": {
+    "name": "Plate Calc",
+    "slug": "plate-calc-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "backgroundColor": "#111111",
+    "android": {
+      "package": "com.platecalc.app",
+      "adaptiveIcon": {
+        "backgroundColor": "#111111"
+      }
+    },
+    "platforms": ["android"]
+  }
+}
