@@ -147,7 +147,7 @@ const styles = StyleSheet.create({
     paddingBottom: 32,
   },
   updateBanner: {
-    backgroundColor: "#FFB300",
+    backgroundColor: "#E53935",
     paddingVertical: 10,
     paddingHorizontal: 16,
     alignItems: "center",
