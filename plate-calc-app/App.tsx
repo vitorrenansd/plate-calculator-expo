@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -19,9 +19,25 @@ import {
 import { PlateResult } from "./src/components/PlateResult";
 import { BarVisual } from "./src/components/BarVisual";
 
+const APP_VERSION = "0.0.0";
+const VERSION_URL =
+  "https://raw.githubusercontent.com/vitorrenansd/plate-calculator-expo/main/version.json";
+
 export default function App() {
   const [input, setInput] = useState("");
   const [result, setResult] = useState<CalculationResult | null>(null);
+  const [updateUrl, setUpdateUrl] = useState<string | null>(null);
+
+  useEffect(() => {
+    fetch(VERSION_URL)
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.version !== APP_VERSION) {
+          setUpdateUrl(data.downloadUrl);
+        }
+      })
+      .catch(() => {});
+  }, []);
 
   function handleCalculate() {
     const calc = calculatePlates(input);
@@ -35,6 +51,20 @@ export default function App() {
     <SafeAreaProvider>
       <SafeAreaView style={styles.safe}>
         <StatusBar barStyle="light-content" backgroundColor="#111111" />
+
+        {/* Update banner */}
+        {updateUrl && (
+          <TouchableOpacity
+            style={styles.updateBanner}
+            onPress={() => Linking.openURL(updateUrl)}
+            activeOpacity={0.8}
+          >
+            <Text style={styles.updateText}>
+              Nova versão disponível! Toque para baixar
+            </Text>
+          </TouchableOpacity>
+        )}
+
         <KeyboardAvoidingView
           style={styles.flex}
           behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -45,7 +75,7 @@ export default function App() {
           >
             <View style={styles.container}>
               {/* Header */}
-              <Text style={styles.title}>PLATE CALC</Text>
+              <Text style={styles.title}>CALCULANILHA</Text>
               <Text style={styles.subtitle}>Calculadora de anilhas</Text>
 
               {/* Input */}
@@ -76,6 +106,7 @@ export default function App() {
               {/* Bar visual */}
               {hasSides && <BarVisual sides={result!.sides} />}
             </View>
+
             {/* Footer */}
             <View style={styles.footerContainer}>
               <Text style={styles.footerText}>
@@ -114,6 +145,17 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     paddingTop: 48,
     paddingBottom: 32,
+  },
+  updateBanner: {
+    backgroundColor: "#FFB300",
+    paddingVertical: 10,
+    paddingHorizontal: 16,
+    alignItems: "center",
+  },
+  updateText: {
+    color: "#111111",
+    fontSize: 13,
+    fontWeight: "700",
   },
   title: {
     color: "#FFFFFF",

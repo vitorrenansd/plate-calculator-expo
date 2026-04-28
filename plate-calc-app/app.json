@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Plate Calc",
+    "name": "Calculanilha",
     "slug": "plate-calc-app",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -8,6 +8,7 @@
     "backgroundColor": "#111111",
     "android": {
       "package": "com.platecalc.app",
+      "permissions": ["INTERNET"],
       "adaptiveIcon": {
         "foregroundImage": "./icon.png",
         "backgroundColor": "#111111"

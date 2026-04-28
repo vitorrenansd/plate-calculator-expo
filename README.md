@@ -11,8 +11,8 @@ Calculadora de anilhas para powerlifting. Digite o peso total desejado na barra 
 
 ```bash
 # Clone o repositório
-git clone https://github.com/seu-usuario/plate-calc.git
-cd plate-calc
+git clone https://github.com/vitorrenansd/plate-calculator-expo.git
+cd plate-calculator-expo
 
 # Instale as dependências
 npx expo install
