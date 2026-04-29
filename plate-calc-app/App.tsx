@@ -19,7 +19,7 @@ import {
 import { PlateResult } from "./src/components/PlateResult";
 import { BarVisual } from "./src/components/BarVisual";
 
-const APP_VERSION = "1.0.0";
+const APP_VERSION = "1.1.0";
 const VERSION_URL =
   "https://raw.githubusercontent.com/vitorrenansd/plate-calculator-expo/main/version.json";
 
